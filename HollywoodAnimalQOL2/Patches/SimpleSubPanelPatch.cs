@@ -19,15 +19,17 @@ namespace HollywoodAnimalQOL2.Patches
             //Temporary workaround 
             //if (__instance.GetType().Name != "AssociationVotedProposalDisplay")
             //{
-                //Because EvPanelShown event added after Show() called
-                HelperObject.Instance.CallNextFrame(() =>
-                {
-                    Logger.Log($"Bypassing Show() panel and call ShowInstantly() instead for {__instance.IDText}");
-                    __instance.ShowInstantly();
-                });
-                return false;
+            //Because EvPanelShown event added after Show() called
+            //HelperObject.Instance.CallNextFrame(() =>
+            //{
+            //    Logger.Log($"Bypassing Show() panel and call ShowInstantly() instead for {__instance.IDText}");
+            //    if(__instance != null && __instance.isActiveAndEnabled)
+            //        __instance.ShowInstantly();
+            //});
+            //return false;
             //}
-            //else return true;
+            //else
+            return true;
         }
     }
 }

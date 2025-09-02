@@ -54,12 +54,13 @@ namespace HollywoodAnimalQOL2
         }
         public void CallNextFrame(Action action)
         {
-            StartCoroutine(CoroutineCallNextFrame(action));
+             StartCoroutine(CoroutineCallNextFrame(action));
         }
         private IEnumerator CoroutineCallNextFrame(Action action)
         {
             yield return null;
-            action();
+            if (action != null)
+                action();
         }
     }
 }
