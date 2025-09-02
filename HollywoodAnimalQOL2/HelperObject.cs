@@ -32,7 +32,7 @@ namespace HollywoodAnimalQOL2
         {
             if (Input.GetKeyDown(KeyCode.F5) && GameLoaded)
             {
-                SaveGameMethod.Invoke();
+                //SaveGameMethod.Invoke(new object[]);
             }
 
         }
