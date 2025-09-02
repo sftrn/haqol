@@ -50,20 +50,6 @@ namespace HollywoodAnimalQOL2
             if (___currentStage == PreproductionEditorView.Stages.Location)
             {
                 ChooseLocationAndCinematog(__instance, ref ___buildingsManager, ref ___charactersForReplacement, ref ___movieWrapper, ref ___selectedItemData, ref ___studioManager);
-                LocationTypeItemView ltiv = ___locationsListView.ItemViewPrefab as LocationTypeItemView;
-                foreach (var item in ___locationsListView.ItemsContainerData)
-                {
-                    var itemData = (item as DebugItemContainerData).RawData as ItemData;
-
-                    var slot = itemData.slot;
-                    //Logger.Log($"Max quality: {maxquaility}");
-                    //49305
-                    //slot.Quality = slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel];
-                    //HelperMethods.CallWhen(() => 
-                    //LocationTypeOnQualityChanged.Invoke(ltiv, new object[] { slot.Config.globalQualityLimit - 1 });
-                    //);
-
-                }
             }
             else if (___currentStage == PreproductionEditorView.Stages.Tech)
             {

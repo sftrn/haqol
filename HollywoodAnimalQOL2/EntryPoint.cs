@@ -18,8 +18,6 @@ namespace Doorstop
             try
             {
                 PreproductionEditorViewPatch.InitPrivateMethods();
-                LocationTypeItemViewPatch.InitPrivateMethods();
-                QualitySelectionPanelPatch.InitPrivateMethods();
                 harmony = new Harmony("com.qwerty.qol.hollywoodanimal");
                 Harmony.DEBUG = true;
                 harmony.PatchCategory("beforeGameLoad");

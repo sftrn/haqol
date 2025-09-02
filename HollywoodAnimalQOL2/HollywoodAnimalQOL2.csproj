@@ -69,20 +69,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelperObject.cs" />
+    <Compile Include="Patches\AppControllerPatch.cs" />
     <Compile Include="Patches\CharacterManagerPatch.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Patches\GameStateManagerPatch.cs" />
     <Compile Include="Patches\GUIBaseViewAnimationsPatch.cs" />
     <Compile Include="Patches\HelperMethodsPatch.cs" />
-    <Compile Include="Patches\LocationTypeItemViewPatch.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Patches\ModeManagerPatch.cs" />
     <Compile Include="Patches\PreproductionEditorViewPatch.cs" />
     <Compile Include="Patches\SecretItemViewPatch.cs" />
     <Compile Include="Patches\SecretUpdatePopupViewPatch.cs" />
     <Compile Include="Patches\SimpleSubPanelPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Patches\QualitySelectionPanelPatch.cs" />
-    <Compile Include="Patches\StarOptionsControllerPatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

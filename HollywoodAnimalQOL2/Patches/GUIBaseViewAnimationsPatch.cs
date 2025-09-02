@@ -16,8 +16,8 @@ namespace HollywoodAnimalQOL2.Patches
     {
         static bool Prefix(GUIBaseViewAnimations __instance, ref float __result)
         {
-            Logger.Log($"Speedup anim {__instance.name}");
-            __result = 100f;
+            //Logger.Log($"Speedup anim {__instance.name}");
+            //__result = 100f;
             return false;
         }
     }

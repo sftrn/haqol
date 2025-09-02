@@ -1,8 +1,12 @@
-﻿using Managers;
+﻿using Enums;
+using GUISystemModule;
+using Managers;
+using Model;
 using System;
 
 using System.Collections;
 using System.Reflection;
+using System.Xml.Linq;
 using UI.Common.Lists.ItemView;
 using UI.Views.MovieEditor;
 using UnityEngine;
@@ -14,25 +18,37 @@ namespace HollywoodAnimalQOL2
     {
         public static HelperObject Instance;
         public static bool GameLoaded {  get; set; }
+        public static SaveManager SaveManager { get; set; }
+        public static CharactersManager CharactersManager { get; set; }
+        public static TimeManager TimeManager { get; set; }
+        public static GUIHelper GuiHelper { get; set; }
+        public static GUISystem GuiSystem { get; set; }
+        public static AppController AppController { get; internal set; }
+
         private void Start()
         {
             Logger.Log("Helper object started");
             Instance = this;
             InitPrivateMethods();
         }
-        static MethodInfo SaveGameMethod;
+        //static MethodInfo TryAutoSaveMethod;
+        //static MethodInfo SaveGameMethod;
 
         public static void InitPrivateMethods()
         {
-            SaveGameMethod =
-                typeof(SaveManager).GetMethod("TryAutoSave",
-                BindingFlags.NonPublic | BindingFlags.Instance);
+            //SaveGameMethod =
+            //    typeof(SaveManager).GetMethod("SaveGame",
+            //    BindingFlags.NonPublic | BindingFlags.Instance);
+            //TryAutoSaveMethod =
+            //    typeof(SaveManager).GetMethod("TryAutoSave",
+            //    BindingFlags.NonPublic | BindingFlags.Instance);
         }
-        private void OnUpdate()
+        private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F5) && GameLoaded)
+            if (Input.GetKeyUp(KeyCode.F5) && !GuiSystem.IsMainMenu && GameLoaded && SaveManager != null && GuiSystem.IsAllHidden && !GuiSystem.PausedByGUI)
             {
-                //SaveGameMethod.Invoke(new object[]);
+                var currentTime = TimeManager.CurrentTime;
+                SaveManager.RequestSaveGame($"QOL_Quicksave {currentTime.Day:D2} {currentTime.Month:D2} {currentTime.Year}");
             }
 
         }
