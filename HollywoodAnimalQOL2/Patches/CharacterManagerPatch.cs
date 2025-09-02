@@ -9,10 +9,11 @@ namespace HollywoodAnimalQOL2
 {
     [HarmonyPatch(typeof(CharactersManager), "OnProfileLoaded")]
     static class CharacterManagerPatch
-    {
+    { 
         static void Postfix()
         {
             Logger.Log("Game loaded patch");
+            HelperObject.GameLoaded = true;
         }
     }
 }
