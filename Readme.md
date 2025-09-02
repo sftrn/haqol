@@ -5,6 +5,7 @@ Hollywood Animal Quality of Life mod. **Last tested: 0.8.50.11EA**
 1. Skip disclaimer on load.
 2. Speed up unnecessary animations like agent task status.
 3. Auto fill preproduction stages.
+4. Quicksave on f5 pressed.
 
    
 ### How to suggest me features?
