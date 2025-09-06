@@ -1,11 +1,13 @@
 # haqol
-Hollywood Animal Quality of Life mod. **Last tested: 0.8.50.12EA**
+Hollywood Animal Quality of Life mod. **Last tested: 0.8.50.13EA**
 
 ### Features
 1. Skip disclaimer on load.
 2. Speed up unnecessary animations like agent task status.
 3. Auto fill preproduction stages.
 4. Quicksave on f5 pressed.
+5. Skip secret arose directly to secrets window.
+6. Speed up distribution.
 
    
 ### How to suggest me features?
