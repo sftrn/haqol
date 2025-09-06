@@ -28,7 +28,7 @@ namespace HollywoodAnimalQOL2
     {
         static void Prefix(SecretDataWrapper secret, ref bool noEvent)
         {
-            HelperObject.ModeManager.UpdateState(Functionalities.Secrets, true);
+            HelperObject.ModeManager.UpdateState(Functionalities.Secrets, true, true);
             HelperObject.ModeManager.EvFunctionalityChange.Fire((Functionalities.Secrets, true));
             //HelperObject.TutorialManager.CurrentActivePopup = null;
             Loggerns.Logger.Log($"ActivateSecret pass");
