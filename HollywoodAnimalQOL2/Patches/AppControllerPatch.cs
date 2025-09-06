@@ -17,8 +17,11 @@ namespace HollywoodAnimalQOL2.Patches
     internal class AppControllerPatch
     {
         static void Postfix(AppController __instance, ref SaveManager ___saveManager,
-             ref TimeManager ___timeManager, ref GUIHelper ___guiHelper, ref  GUISystem ___guiSystem)
+             ref TimeManager ___timeManager,
+             ref GUIHelper ___guiHelper,
+             ref  GUISystem ___guiSystem, ref TutorialManager ___tutorialManager)
         {
+
             Logger.Log("Game started");
             HelperObject.GameLoaded = true;
             HelperObject.SaveManager = ___saveManager;
@@ -26,6 +29,7 @@ namespace HollywoodAnimalQOL2.Patches
             HelperObject.GuiHelper = ___guiHelper;
             HelperObject.GuiSystem = ___guiSystem;
             HelperObject.AppController = __instance;
+            HelperObject.TutorialManager = ___tutorialManager;
         }
     }
 
