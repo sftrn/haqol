@@ -46,9 +46,9 @@ namespace Loggerns
         {
             logFunction(message);
         }
-        static string FormatMessage(string message)
+        public static string FormatMessage(string message)
         {
-            return string.Format("[{1}]{0,10}: {2}",  DateTime.Now.ToString("HH:mm:ss"), prefix, message);
+            return string.Format("[{1}]{0,11}: {2}",  DateTime.Now.ToString("HH:mm:ss:fff"), prefix, message);
         }
         public static void LogFile(string message)
         {

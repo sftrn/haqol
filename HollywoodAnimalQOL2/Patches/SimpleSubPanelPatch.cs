@@ -6,29 +6,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UI.Common.SubPanels;
+using UI.ScriptedAnimators;
 
 namespace HollywoodAnimalQOL2.Patches
 {
-    [HarmonyPatch(typeof(SimpleSubPanel), "ShowLogic"
-        //, new Type[] { typeof(bool) }
-        )]
-    internal class SimpleSubPanelPatch
+    [HarmonyPatch(typeof(SimpleSubPanel), "ShowLogic")]
+    internal class SimpleSubPanelShowLogicPatch
     {
-        static bool Prefix(SimpleSubPanel __instance)
+        static bool Prefix(SimpleSubPanel __instance, ref ScriptedAnimatorBase ___showAnimator)
         {
-            //Temporary workaround 
-            //if (__instance.GetType().Name != "AssociationVotedProposalDisplay")
-            //{
-            //Because EvPanelShown event added after Show() called
-            //HelperObject.Instance.CallNextFrame(() =>
-            //{
-            //    Logger.Log($"Bypassing Show() panel and call ShowInstantly() instead for {__instance.IDText}");
-            //    if(__instance != null && __instance.isActiveAndEnabled)
-            //        __instance.ShowInstantly();
-            //});
-            //return false;
-            //}
-            //else
+            Logger.Log($"Speedup ShowLogic {__instance.IDText}");
+            if (___showAnimator != null)
+            {
+                ___showAnimator.TimeMultiplier = 10f;
+                ___showAnimator.AnimationDuration = Enums.AnimationDurations.Short;
+            }
+                return true;
+        }
+    }
+    [HarmonyPatch(typeof(SimpleSubPanel), "Show", new Type[] {  typeof(bool) })]
+    internal class SimpleSubPanelShowPatch
+    {
+        static bool Prefix(SimpleSubPanel __instance, ref ScriptedAnimatorBase ___showAnimator, ref int ___animationFrameDelay)
+        {
+            __instance.VerboseLogging = true;
+            ___animationFrameDelay = 0;
+
+            Logger.Log($"Speedup Show {__instance.IDText}");
+            if (___showAnimator != null)
+            {
+                ___showAnimator.TimeMultiplier = 10f;
+                ___showAnimator.AnimationDuration = Enums.AnimationDurations.Short;
+            }
             return true;
         }
     }

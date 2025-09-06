@@ -27,7 +27,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\Hollywood Animal\qol\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -66,22 +66,61 @@
       <Aliases>Core</Aliases>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\..\..\..\Program Files\Unity\Hub\Editor\6000.0.39f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
+      <Aliases>UIModule</Aliases>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patches\GameEventProcessorPatch.cs" />
+    <Compile Include="Patches\GUILayerPatch.cs" />
     <Compile Include="HelperObject.cs" />
+    <Compile Include="Patches\AnimationManagerPatch.cs" />
     <Compile Include="Patches\AppControllerPatch.cs" />
+    <Compile Include="Patches\BlockerTintPatch.cs" />
     <Compile Include="Patches\CharacterManagerPatch.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="Patches\DebugPatch.cs" />
+    <Compile Include="Patches\EventText.cs" />
+    <Compile Include="Patches\EventViewPatch.cs" />
+    <Compile Include="Patches\FillTweenAnimatorPatch.cs" />
     <Compile Include="Patches\GameStateManagerPatch.cs" />
+    <Compile Include="Patches\GaugeBarPatch.cs" />
+    <Compile Include="Patches\GenericSelectionItemViewPatch.cs" />
     <Compile Include="Patches\GUIBaseViewAnimationsPatch.cs" />
+    <Compile Include="Patches\GUIHelperPatch.cs" />
+    <Compile Include="Patches\GUISystemPatch.cs" />
     <Compile Include="Patches\HelperMethodsPatch.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Patches\ItemSelectorBasePatch.cs" />
+    <Compile Include="Patches\ItemViewPatch.cs" />
+    <Compile Include="Patches\LeanTweenPatch.cs" />
+    <Compile Include="Patches\LoadableAnimatorsAwaiterPatch.cs" />
     <Compile Include="Patches\ModeManagerPatch.cs" />
+    <Compile Include="Patches\ModeTaskWrapperPatch.cs" />
+    <Compile Include="Patches\MultiTweenAnimatorPatch.cs" />
+    <Compile Include="Patches\NewSecretPanelPatch.cs" />
+    <Compile Include="Patches\NewSurveillanceViewPatch.cs" />
+    <Compile Include="Patches\NewThingSmallPopupViewPatch.cs" />
+    <Compile Include="Patches\AgentForSecretCardItemViewPatch.cs" />
+    <Compile Include="Patches\ParallaxImagePatch.cs" />
+    <Compile Include="Patches\PoliceRaidAnimationPatch.cs" />
+    <Compile Include="Patches\PopupAnimationPatch.cs" />
     <Compile Include="Patches\PreproductionEditorViewPatch.cs" />
+    <Compile Include="Patches\ScriptedAnimatorBasePatch.cs" />
     <Compile Include="Patches\SecretItemViewPatch.cs" />
     <Compile Include="Patches\SecretUpdatePopupViewPatch.cs" />
+    <Compile Include="Patches\SecurityManagerPatch.cs" />
+    <Compile Include="Patches\ShineMaterialAnimationPatch.cs" />
     <Compile Include="Patches\SimpleSubPanelPatch.cs" />
+    <Compile Include="Patches\TriggerProcessorPatch.cs" />
+    <Compile Include="Patches\TutorialBGPatch.cs" />
+    <Compile Include="Patches\TutorialManagerPatch.cs" />
+    <Compile Include="Patches\TutorialOverlayPatch.cs" />
+    <Compile Include="Patches\ViewControllerPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Patches\SurveillanceResultsViewPatch.cs" />
+    <Compile Include="Patches\SecretManagerPatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

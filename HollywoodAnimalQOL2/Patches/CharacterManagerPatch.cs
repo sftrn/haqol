@@ -14,10 +14,13 @@ namespace HollywoodAnimalQOL2
     [HarmonyPatch(typeof(CharactersManager), "OnProfileLoaded")]
     static class CharacterManagerPatch
     { 
-        static void Postfix(CharactersManager __instance, ModeManager ___modeManager, TimeManager ___timeManager, GUIHelper ___guiHelper)
+        static void Postfix(CharactersManager __instance,
+            ModeManager ___modeManager,
+            TimeManager ___timeManager, GUIHelper ___guiHelper)
         {
             Logger.Log("Profile loaded");
             HelperObject.CharactersManager = __instance;
+            HelperObject.ModeManager = ___modeManager;
         }
     }
 }
