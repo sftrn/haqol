@@ -27,16 +27,17 @@ namespace HollywoodAnimalQOL2.Patches
     //        //__instance.an
     //    }
 
-    //}
-    //[HarmonyPatch(typeof(Blurs), "PopupBlurAnimation")]
-    //internal class BlursPopupBlurAnimationPatch
-    //{
-    //    static void Prefix()
-    //    {
-    //        Logger.Log("BlursPopupBlurAnimationPatch prefix");
-    //    }
+//}
+//[HarmonyPatch(typeof(Blurs), "PopupBlurAnimation")]
+//internal class BlursPopupBlurAnimationPatch
+//{
+//    static void Prefix()
+//    {
+//        Logger.Log("BlursPopupBlurAnimationPatch prefix");
+//    }
 
-    //}
+//}
+#if DEBUG
     [HarmonyPatch(typeof(Blurs), "PlayBlursTransition")]
     internal class BlursPlayBlursTransitionPatch
     {
@@ -46,6 +47,7 @@ namespace HollywoodAnimalQOL2.Patches
         }
 
     }
+#endif
     [HarmonyPatch(typeof(GUISystem), "HideView")]
     internal class GUISystemHideViewPatch
     {
@@ -155,6 +157,7 @@ namespace HollywoodAnimalQOL2.Patches
                 Logger.Log($"GUISystemShowViewPatch end");
             }
         }
+#if DEBUG
         [HarmonyPatch(typeof(GUISystem), methodName: "AddToQueue")]
         internal class GUISystemAddToQueuePatch
         {
@@ -285,15 +288,18 @@ namespace HollywoodAnimalQOL2.Patches
                 //HelperObject.ModeManager = modeManager;
             }
         }
+#endif
         [HarmonyPatch(typeof(Layers), methodName: "TryRemoveViewFromLayer")]
         internal class LayersTryRemoveViewFromLayerPatch
         {
+#if DEBUG
             static void Prefix(Layers __instance, GUIBaseView view)
             {
 
                 Logger.Log($"LayersTryRemoveViewFromLayerPatch {view.name}");
                 //HelperObject.ModeManager = modeManager;
             }
+#endif
             static void Postfix(Layers __instance, GUIBaseView view)
             {
                 if (view.name.Contains("LoadView"))
@@ -302,10 +308,13 @@ namespace HollywoodAnimalQOL2.Patches
                     GameObject ho = new GameObject();
                     ho.AddComponent<HelperObject>();
                 }
+#if DEBUG
                 Logger.Log($"LayersTryRemoveViewFromLayerPatch {view.name} end");
+#endif
                 //HelperObject.ModeManager = modeManager;
             }
         }
+#if DEBUG
         [HarmonyPatch(typeof(GUISystem), methodName: "SetPopupCanvasActive")]
         internal class GUISystemSetPopupCanvasActivePatch
         {
@@ -322,5 +331,6 @@ namespace HollywoodAnimalQOL2.Patches
                 //HelperObject.ModeManager = modeManager;
             }
         }
+#endif
     }
 }

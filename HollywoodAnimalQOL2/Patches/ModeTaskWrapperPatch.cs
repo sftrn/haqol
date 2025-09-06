@@ -14,6 +14,7 @@ using Utils.Conditions;
 
 namespace HollywoodAnimalQOL2.Patches
 {
+#if DEBUG
     [HarmonyPatch(typeof(ModeTaskWrapper), "RegisterTask")]
     internal class ModeTaskWrapperRegisterTaskPatch
     {
@@ -22,4 +23,5 @@ namespace HollywoodAnimalQOL2.Patches
             Logger.Log($"ModeTaskWrapperRegisterTaskPatch patch");
         }
     }
+#endif
 }

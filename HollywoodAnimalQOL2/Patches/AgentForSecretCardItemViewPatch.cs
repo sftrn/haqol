@@ -10,6 +10,7 @@ using static UI.Common.Lists.ItemView.AgentForSecretCardItemView;
 
 namespace HollywoodAnimalQOL2.Patches
 {
+#if DEBUG
     [HarmonyPatch(typeof(NextIterationAnimation), "Play")]
     internal class NextIterationAnimationPlayPatch
     {
@@ -18,4 +19,5 @@ namespace HollywoodAnimalQOL2.Patches
             Logger.Log("NextIterationAnimationPlayPatch");
         }
     }
+#endif
 }

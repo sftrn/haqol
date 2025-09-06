@@ -15,6 +15,7 @@ namespace HollywoodAnimalQOL2.Patches
 {
 
 
+#if DEBUG
     [HarmonyPatch(typeof(ModeManager), "Initialize")]
     internal class ModeManagerInitializePatch
     {
@@ -63,4 +64,5 @@ namespace HollywoodAnimalQOL2.Patches
             }
         }
     }
+#endif
 }

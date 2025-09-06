@@ -9,6 +9,7 @@ using UI.Common.SubPanels;
 
 namespace HollywoodAnimalQOL2.Patches
 {
+#if DEBUG
     [HarmonyPatch(typeof(NewSecretPanel), "StartPresentationAnimationOnSecretItemView")]
     internal class NewSecretPanelPatch
     {
@@ -20,4 +21,5 @@ namespace HollywoodAnimalQOL2.Patches
             //__instance.
         }
     }
+#endif
 }

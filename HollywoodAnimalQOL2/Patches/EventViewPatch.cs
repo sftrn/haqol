@@ -28,6 +28,7 @@ namespace HollywoodAnimalQOL2.Patches
             //___starterPatternsAnim.TimeMultiplier = 2f;
         }
     }
+#if DEBUG
     [HarmonyPatch(typeof(EventView), "NextInEvent")]
     internal class EventViewNextInEventPatch
     {
@@ -40,4 +41,5 @@ namespace HollywoodAnimalQOL2.Patches
             Logger.Log("EventViewNextInEventPatch end");
         }
     }
+#endif
 }

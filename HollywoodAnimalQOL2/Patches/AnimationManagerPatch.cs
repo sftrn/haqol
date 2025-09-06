@@ -10,6 +10,8 @@ using static UI.Common.Lists.ItemView.AgentForSecretCardItemView;
 
 namespace HollywoodAnimalQOL2.Patches
 {
+
+#if DEBUG
     [HarmonyPatch(typeof(AnimationManager), "ResetAndFade", new Type[] {
             typeof(CanvasGroup),typeof(bool),
         typeof(Vector3), typeof(float),
@@ -45,4 +47,5 @@ namespace HollywoodAnimalQOL2.Patches
             Loggerns.Logger.Log("AnimationManagerGetDirectionPatch prefix");
         }
     }
+#endif
 }

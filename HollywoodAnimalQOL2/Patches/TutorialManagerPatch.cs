@@ -10,6 +10,7 @@ using UI.Views.Tutorial;
 
 namespace HollywoodAnimalQOL2.Patches
 {
+#if DEBUG
     [HarmonyPatch(typeof(TutorialManager), "SetupModeForWaiting")]
     internal class TutorialManagerSetupModeForWaitingPatch
     {
@@ -19,4 +20,5 @@ namespace HollywoodAnimalQOL2.Patches
             return true;
         }
     }
+#endif
 }

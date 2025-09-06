@@ -9,6 +9,7 @@ using UI.Common.Animations;
 
 namespace HollywoodAnimalQOL2.Patches
 {
+#if DEBUG
     [HarmonyPatch(typeof(LoadableAnimatorsAwaiter), "LoadAndWaitFor")]
     internal class LoadableAnimatorsAwaiterLoadAndWaitForPatch
     {
@@ -19,4 +20,5 @@ namespace HollywoodAnimalQOL2.Patches
             return true;
         }
     }
+#endif
 }

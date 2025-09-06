@@ -8,6 +8,7 @@ using UI.Common.EventUI;
 
 namespace HollywoodAnimalQOL2.Patches
 {
+#if DEBUG
     [HarmonyPatch(typeof(EventText), "PlayIllustrationZoomIn")]
     internal class EventPlayIllustrationZoomInText
     {
@@ -17,4 +18,5 @@ namespace HollywoodAnimalQOL2.Patches
             //___zoomInDuration = 0.1f;
         }
     }
+#endif
 }

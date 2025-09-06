@@ -12,9 +12,11 @@ namespace HollywoodAnimalQOL2.Patches
     [HarmonyPatch(typeof(TutorialOverlay), "PopupIsActive", MethodType.Getter)]
     internal class TutorialOverlayPopupIsActivePatch
     {
+#if DEBUG
         static void Prefix(ref bool __result)
         {
             Logger.Log($"TutorialOverlayPopupIsActivePatch current value: {__result}");
         }
+#endif
     }
 }

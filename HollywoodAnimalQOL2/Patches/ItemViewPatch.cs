@@ -13,6 +13,8 @@ using Logger = Loggerns.Logger;
 
 namespace HollywoodAnimalQOL2.Patches
 {
+
+#if DEBUG
     [HarmonyPatch(typeof(ItemView), "InitView",
         new Type[] { typeof(ItemContainerData), typeof(Transform) })]
     internal class ItemViewInitViewPatch
@@ -25,4 +27,5 @@ namespace HollywoodAnimalQOL2.Patches
             //___showAnimator.AnimationDuration = Enums.AnimationDurations.Short;
         }
     }
+#endif
 }

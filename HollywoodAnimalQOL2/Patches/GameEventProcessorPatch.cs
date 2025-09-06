@@ -10,6 +10,7 @@ using UI.ScriptedAnimators;
 
 namespace HollywoodAnimalQOL2.Patches
 {
+#if DEBUG
     [HarmonyPatch(typeof(GameEventProcessor), "GetNextLineBatchGenerator")]
     internal class GameEventProcessorGetNextLineBatchGeneratorPatch
     {
@@ -28,4 +29,5 @@ namespace HollywoodAnimalQOL2.Patches
             Logger.Log("GameEventProcessorGetNextLineBatchGeneratorPatch end");
         }
     }
+#endif
 }
