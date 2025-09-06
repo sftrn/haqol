@@ -19,8 +19,6 @@ namespace HollywoodAnimalQOL2
         static bool Prefix(ref bool __result)
         {
             Logger.Log("Bypassing disclaimer");
-            GameObject ho = new GameObject();
-            ho.AddComponent<HelperObject>();
             __result = false;
             return false;
         }

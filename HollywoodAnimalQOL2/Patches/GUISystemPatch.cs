@@ -11,7 +11,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UI.Common.Lists.ItemView;
+using UnityEngine;
 using static GUISystemModule.GUISystem;
+using Logger = Loggerns.Logger;
 
 namespace HollywoodAnimalQOL2.Patches
 {
@@ -294,7 +296,12 @@ namespace HollywoodAnimalQOL2.Patches
             }
             static void Postfix(Layers __instance, GUIBaseView view)
             {
+                if (view.name.Contains("LoadView"))
+                {
 
+                    GameObject ho = new GameObject();
+                    ho.AddComponent<HelperObject>();
+                }
                 Logger.Log($"LayersTryRemoveViewFromLayerPatch {view.name} end");
                 //HelperObject.ModeManager = modeManager;
             }
