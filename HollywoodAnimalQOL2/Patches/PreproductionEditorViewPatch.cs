@@ -64,7 +64,7 @@ namespace HollywoodAnimalQOL2
 
 
             //OnResultsUpdated.Invoke
-            //UpdateResults.Invoke(__instance, new object[] { });
+            UpdateResults.Invoke(__instance, new object[] { });
 
             //___startPhaseButton.SetActive(true);
         }
