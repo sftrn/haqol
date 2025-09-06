@@ -15,7 +15,9 @@ namespace HollywoodAnimalQOL2.Patches
     {
         static bool Prefix(SimpleSubPanel __instance, ref ScriptedAnimatorBase ___showAnimator)
         {
+#if DEBUG
             Logger.Log($"Speedup ShowLogic {__instance.IDText}");
+#endif
             if (___showAnimator != null)
             {
                 ___showAnimator.TimeMultiplier = 10f;
@@ -32,7 +34,9 @@ namespace HollywoodAnimalQOL2.Patches
             __instance.VerboseLogging = true;
             ___animationFrameDelay = 0;
 
+#if DEBUG
             Logger.Log($"Speedup Show {__instance.IDText}");
+#endif
             if (___showAnimator != null)
             {
                 ___showAnimator.TimeMultiplier = 10f;

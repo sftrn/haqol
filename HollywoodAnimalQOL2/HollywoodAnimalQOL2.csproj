@@ -69,6 +69,7 @@
     <Reference Include="UnityEngine.UIModule">
       <HintPath>..\..\..\..\..\..\Program Files\Unity\Hub\Editor\6000.0.39f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
       <Aliases>UIModule</Aliases>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
