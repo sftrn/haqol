@@ -24,7 +24,9 @@ namespace HollywoodAnimalQOL2.Patches
     string associatedImageId,
     EventContextType contextType)
         {
+#if DEBUG
             Logger.Log($"TriggerProcessorApplyTriggersInnerPatch patch {output?.requestedNextEventCountdown} {contextType}");
+#endif
             foreach (var item in triggers)
             {
                 Logger.Log($"trigger type: {item.triggerType} {item.value} {contextType}");
@@ -33,7 +35,9 @@ namespace HollywoodAnimalQOL2.Patches
         }
         static void Postfix()
         {
+#if DEBUG
             Logger.Log("TriggerProcessorApplyTriggersInnerPatch end");
+#endif
         }
     }
 }
