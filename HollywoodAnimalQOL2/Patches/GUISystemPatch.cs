@@ -127,8 +127,9 @@ namespace HollywoodAnimalQOL2.Patches
             static bool Prefix(GUISystem __instance, ViewKeys viewId, ref GUIParams param,
                 ref Dictionary<ViewKeys, GUIBaseView> ___views)
             {
-                
+#if DEBUG
                 Logger.Log($"GUISystemShowViewPatch {viewId}");
+#endif
                 //if (viewId == ViewKeys.NewThingSmallPopupView)
                 //{
                 //    __instance.HideView(viewId, param);
@@ -302,7 +303,7 @@ namespace HollywoodAnimalQOL2.Patches
 #endif
             static void Postfix(Layers __instance, GUIBaseView view)
             {
-                if (view.name.Contains("LoadView"))
+                if (view.name.Contains("LogAndButtonsView"))
                 {
 
                     GameObject ho = new GameObject();

@@ -59,7 +59,10 @@ namespace HollywoodAnimalQOL2
         }
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.F5) && !GuiSystem.IsMainMenu && GameLoaded && SaveManager != null && GuiSystem.IsAllHidden && !GuiSystem.PausedByGUI)
+            if (Input.GetKeyUp(KeyCode.F5) &&
+                !GuiSystem.IsMainMenu &&
+                GameLoaded && SaveManager != null &&
+                GuiSystem.IsAllHidden && !GuiSystem.PausedByGUI)
             {
                 var currentTime = TimeManager.CurrentTime;
                 SaveManager.RequestSaveGame($"QOL_Quicksave {currentTime.Day:D2} {currentTime.Month:D2} {currentTime.Year}");

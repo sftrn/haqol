@@ -42,7 +42,9 @@ namespace HollywoodAnimalQOL2.Patches
             ref ScriptedAnimatorBase ___daysLeftDisplayShowAnimator,
             ref ScriptedAnimatorBase ___riskLvlLabelShowAnimator, ref AnimationCurve ___presentationGaugeRiseCurve)
         {
+#if DEBUG
             Logger.Log($"StartPresentationAnimation Speedup anim for {__instance.name}");
+#endif
             //for (int i = 0; i < ___presentationGaugeRiseCurve.keys.Length; i++)
             //{
             //    ___presentationGaugeRiseCurve.keys[i].time = 0.05f*i;
