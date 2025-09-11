@@ -11,7 +11,8 @@ Hollywood Animal Quality of Life mod. **Last tested: 0.8.50.15EA**
 
    
 ### How to suggest me features?
-1. Discord https://discord.gg/kxDx5um9aB
+1. Game discord (https://discord.gg/Hd8aquuGQ2) in thread https://discord.com/channels/1247693095085015122/1415549236119863316
+1. Mod discord https://discord.gg/kxDx5um9aB
 2. Github
 3. Mail haqol@sftrn.com
 4. [Steam discussions](https://steamcommunity.com/app/2680550/discussions/0/594032928485502764/)
