@@ -37,7 +37,7 @@ Example:
 The commented code has been saved so that you can see my progress and understand which method I really need. Maybe you'll find something interesting, I'll delete it in the future when the mod is completed.
 
 ### Used projects
-[Unity Doorstep](https://github.com/NeighTools/UnityDoorstop)
+[Unity Doorstop](https://github.com/NeighTools/UnityDoorstop)
 
 [Harmony](https://github.com/pardeike/Harmony)
 
