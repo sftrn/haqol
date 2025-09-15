@@ -50,13 +50,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\Program Files\Unity\Hub\Editor\6000.0.39f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -73,6 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\CustomCharacter.cs" />
+    <Compile Include="Patches\DataManagePatchr.cs" />
+    <Compile Include="Patches\DataLoaderPatch.cs" />
     <Compile Include="Patches\GameEventProcessorPatch.cs" />
     <Compile Include="Patches\GUILayerPatch.cs" />
     <Compile Include="HelperObject.cs" />
@@ -93,6 +90,7 @@
     <Compile Include="Patches\GUISystemPatch.cs" />
     <Compile Include="Patches\HelperMethodsPatch.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Patches\ImageManagerPatch.cs" />
     <Compile Include="Patches\ItemSelectorBasePatch.cs" />
     <Compile Include="Patches\ItemViewPatch.cs" />
     <Compile Include="Patches\LeanTweenPatch.cs" />
@@ -125,9 +123,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Assets\newactors.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="0Harmony.dll" />
+    <Content Include="Assets\CharacterIcons\PRT_TALENT_M_MID_60000.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

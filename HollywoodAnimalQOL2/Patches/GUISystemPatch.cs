@@ -155,7 +155,9 @@ namespace HollywoodAnimalQOL2.Patches
             }
             static void Postfix()
             {
+#if DEBUG
                 Logger.Log($"GUISystemShowViewPatch end");
+#endif
             }
         }
 #if DEBUG
