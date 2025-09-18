@@ -21,7 +21,7 @@ namespace HollywoodAnimalQOL2.Patches
             if (___showAnimator != null)
             {
                 ___showAnimator.TimeMultiplier = 10f;
-                ___showAnimator.AnimationDuration = Enums.AnimationDurations.Short;
+                //___showAnimator.AnimationDuration = Enums.AnimationDurations.Short;
             }
                 return true;
         }
@@ -40,7 +40,7 @@ namespace HollywoodAnimalQOL2.Patches
             if (___showAnimator != null)
             {
                 ___showAnimator.TimeMultiplier = 10f;
-                ___showAnimator.AnimationDuration = Enums.AnimationDurations.Short;
+                //___showAnimator.AnimationDuration = Enums.AnimationDurations.Short;
             }
             return true;
         }

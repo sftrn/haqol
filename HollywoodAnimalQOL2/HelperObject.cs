@@ -1,11 +1,15 @@
-﻿using Enums;
+﻿using Data.Configs;
+using Data.GameObject.Character;
+using Enums;
 using GUISystemModule;
+using HollywoodAnimalQOL2.Patches;
 using Managers;
 using Model;
 using Modes;
 using System;
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Xml.Linq;
 using UI.Common.Lists.ItemView;
@@ -27,12 +31,23 @@ namespace HollywoodAnimalQOL2
         public static ModeManager ModeManager { get; set; }
         public static AppController AppController { get; internal set; }
         public static TutorialManager TutorialManager { get; internal set; }
+        public static ImageManager ImageManager { get; internal set; }
+        public static LocalizationManager LocalizationManager { get;  set; }
+        public static Dictionary<string, CharacterConfig> Characters { get; set; }
 
         private void Start()
         {
             Logger.Log("Helper object started");
             Instance = this;
             InitPrivateMethods();
+            for (int i = 0; i < 10; i++)
+            {
+                AddNewCharacterToGame(CharacterType.Talent, Professions.Actor, Genders.Male, SexualPreference.HETEROSEXUAL,
+                    1, 0.5f, 1f, 0.5f, 0.5f, 0.5f, i, i,
+                    new List<string> { }, false, 25f);
+            }
+            LocalizationManagerInitializePatch.Inited = false;
+#if DEBUG
             DebugModes.Logs.GUI = true;
             DebugModes.Logs.CHARACTERS = true;
             DebugModes.Logs.SECRETS = true;
@@ -44,18 +59,37 @@ namespace HollywoodAnimalQOL2
             DebugModes.Logs.ASSETS = true;
             DebugModes.Logs.RELEASE = true;
             DebugModes.Logs.TITANS = true;
+#endif
         }
-        //static MethodInfo TryAutoSaveMethod;
-        //static MethodInfo SaveGameMethod;
-
+        //TalentDataWrapper
+        static MethodInfo CreateTalentFromParams;
         public static void InitPrivateMethods()
         {
-            //SaveGameMethod =
-            //    typeof(SaveManager).GetMethod("SaveGame",
-            //    BindingFlags.NonPublic | BindingFlags.Instance);
-            //TryAutoSaveMethod =
-            //    typeof(SaveManager).GetMethod("TryAutoSave",
-            //    BindingFlags.NonPublic | BindingFlags.Instance);
+            CreateTalentFromParams =
+                typeof(CharactersManager).GetMethod("CreateTalentFromParams",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+        }
+        private TalentDataWrapper AddNewCharacterToGame(
+    Enums.CharacterType type,
+    Professions profession,
+    Genders gender,
+    SexualPreference sexualPreference,
+    int preferredDarkPresent,
+    float skill,
+    float limit,
+    float mood,
+    float attitude,
+    float selfEsteem,
+    float art,
+    float com,
+    List<string> labels,
+    bool isForTutorial = false,
+    float age = -1f)
+        {
+            Logger.Log("Creating character ");
+            return CreateTalentFromParams.Invoke(CharactersManager,
+                new object[] { type, profession, gender, sexualPreference,
+                    preferredDarkPresent, skill, limit, mood, attitude, selfEsteem, art, com, labels, isForTutorial, age }) as TalentDataWrapper;
         }
         private void Update()
         {
@@ -71,7 +105,9 @@ namespace HollywoodAnimalQOL2
         }
         public void CallNextFrame(Action action)
         {
+#if DEBUG
             Logger.Log($"Creating coroutine for action");
+#endif
             StartCoroutine(CoroutineCallNextFrame(action));
         }
         private IEnumerator CoroutineCallNextFrame(Action action)

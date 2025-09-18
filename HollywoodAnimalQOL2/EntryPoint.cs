@@ -1,12 +1,17 @@
-﻿using HarmonyLib;
+﻿using Data.Configs;
+using HarmonyLib;
 using HollywoodAnimalQOL2;
+using HollywoodAnimalQOL2.Objects;
 using HollywoodAnimalQOL2.Patches;
 using Loggerns;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
+using Logger = Loggerns.Logger;
 
 namespace Doorstop
 {
@@ -33,6 +38,22 @@ namespace Doorstop
             }
         }
         
+        public static void AfterPatch()
+        {
+            List<CustomCharacter> characters = new List<CustomCharacter>()
+            {
+                new CustomCharacter()
+                {
+                    FirstName = "Leonid",
+                    LastName = "Konevsky",
+                    Profession = Enums.Professions.Actor,
+                    IconPath = "CharacterIcons/LeonidKonevsky.png",
+                }
+            };
+            var json = JsonUtility.ToJson(characters);
+
+            File.WriteAllText("characters.json", json);
+        }
     }
 
 }

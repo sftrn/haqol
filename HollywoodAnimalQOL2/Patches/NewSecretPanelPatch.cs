@@ -16,7 +16,7 @@ namespace HollywoodAnimalQOL2.Patches
         static void Prefix(NewSecretPanel __instance)
         {
             Logger.Log($"StartPresentationAnimationOnSecretItemView inst: {__instance.name}");
-            var test = __instance.enabled;
+            //var test = __instance.enabled;
 
             //__instance.
         }

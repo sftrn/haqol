@@ -159,8 +159,7 @@ namespace HollywoodAnimalQOL2
                 {
                     LocationSlotWrapper slot = l.Value;
                     slot.Type = LocationTypes.Indoor;
-                    slot.Quality = studioManagerCopy.
-                    GetMaxIndoorLocaltionQuality(movieWrapperCopy, slot.Quality, slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel - 1]) - 1;//slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel];
+                    slot.Quality = studioManagerCopy.GetCurrentQualityLimit(slot);// studioManagerCopy.GetMaxIndoorLocaltionQuality(movieWrapperCopy, slot.Quality, slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel - 1]) - 1;//slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel];
                 }));
             }
         }

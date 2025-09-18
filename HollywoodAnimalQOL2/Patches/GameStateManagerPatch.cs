@@ -1,4 +1,5 @@
-﻿using Doorstop;
+﻿using Data.Configs;
+using Doorstop;
 using HarmonyLib;
 using Loggerns;
 using Managers;
@@ -24,8 +25,6 @@ namespace HollywoodAnimalQOL2
         }
         static void Postfix()
         {
-            Entrypoint.harmony.PatchAllUncategorized();
-            Logger.Log("Patching completed");
         }
     }
 }
