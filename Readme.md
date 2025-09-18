@@ -1,5 +1,5 @@
 # haqol
-Hollywood Animal Quality of Life mod. **Last tested: 0.8.50.15EA**
+Hollywood Animal Quality of Life mod. **Last tested: 0.8.50.18EA**
 
 ### Features
 1. Skip disclaimer on load.
