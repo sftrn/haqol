@@ -31,8 +31,9 @@ namespace HollywoodAnimalQOL2.Objects
         public static List<CharacterConfig> GetCustomCharacters()
         {
             Logger.Log($"lm: {HelperObject.LocalizationManager}");
-            List<CustomCharacter> characters =
-                JsonUtility.FromJson<List<CustomCharacter>>(File.ReadAllText("./qol/Assets/newactors.json"));
+            HelperObject.LocalizationManager.AddSubstitution("dsad", "dsad");
+            //List<CustomCharacter> characters =
+            //JsonUtility.FromJson<List<CustomCharacter>>(File.ReadAllText("./qol/Assets/newactors.json"));
             List<CharacterConfig> convertedCharacters = new List<CharacterConfig>();
             return convertedCharacters;
             //foreach (var item in characters)

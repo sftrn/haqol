@@ -18,7 +18,7 @@ namespace HollywoodAnimalQOL2.Patches
         static bool postfixProcess = false;
         static void Prefix(Dictionary<string, CharacterConfig> ___charactersDataCache)
         {
-            Loggerns.Logger.Log("TryGetCharactersData called");
+            //Loggerns.Logger.Log("TryGetCharactersData called");
             if (___charactersDataCache == null)
             {
                 Loggerns.Logger.Log("TryGetCharactersData called and cache is null");
@@ -30,11 +30,8 @@ namespace HollywoodAnimalQOL2.Patches
         {
             if (postfixProcess)
             {
-                foreach (var item in CustomCharacter.GetCustomCharacters())
-                {
-                    ___charactersDataCache.Add(item.Id, item);
-                    postfixProcess = false;
-                }
+                HelperObject.Characters = ___charactersDataCache;
+                
             }
         }
     }

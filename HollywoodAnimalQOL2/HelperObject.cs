@@ -1,6 +1,8 @@
-﻿using Data.GameObject.Character;
+﻿using Data.Configs;
+using Data.GameObject.Character;
 using Enums;
 using GUISystemModule;
+using HollywoodAnimalQOL2.Patches;
 using Managers;
 using Model;
 using Modes;
@@ -31,6 +33,7 @@ namespace HollywoodAnimalQOL2
         public static TutorialManager TutorialManager { get; internal set; }
         public static ImageManager ImageManager { get; internal set; }
         public static LocalizationManager LocalizationManager { get;  set; }
+        public static Dictionary<string, CharacterConfig> Characters { get; set; }
 
         private void Start()
         {
@@ -43,6 +46,7 @@ namespace HollywoodAnimalQOL2
                     1, 0.5f, 1f, 0.5f, 0.5f, 0.5f, i, i,
                     new List<string> { }, false, 25f);
             }
+            LocalizationManagerInitializePatch.Inited = false;
 #if DEBUG
             DebugModes.Logs.GUI = true;
             DebugModes.Logs.CHARACTERS = true;
