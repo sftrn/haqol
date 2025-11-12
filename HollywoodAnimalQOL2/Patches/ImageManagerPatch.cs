@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UI.Common.Lists.ItemView;
 using UnityEngine;
-using static UnityEngine.Networking.UnityWebRequest;
+//using static UnityEngine.Networking.UnityWebRequest;
 using Logger = Loggerns.Logger;
 
 namespace HollywoodAnimalQOL2.Patches

@@ -26,26 +26,26 @@ namespace HollywoodAnimalQOL2.Patches
     }
 
 #if DEBUG
-    [HarmonyPatch(typeof(GUIBaseViewAnimations), "ShowWindow")]
-    internal class GUIBaseViewAnimationsShowWindowPatch
-    {
-        static bool Prefix(GUIBaseViewAnimations __instance)
-        {
-            if (__instance != null)
-                Logger.Log($"GUIBaseViewAnimationsShowWindowPatch Speedup anim {__instance.name}");
-            //__instance.NeedToPlayAnimation = false;
-            return true;
-        }
-    }
-    [HarmonyPatch(typeof(GUIBaseViewAnimations), "OnAnimationFinished")]
-    internal class GUIBaseViewAnimationsOnAnimationFinishedPatch
-    {
-        static bool Prefix(GUIBaseViewAnimations __instance, Action ___onShownCallback)
-        {
-            if (__instance != null)
-                Logger.Log($"GUIBaseViewAnimationsOnAnimationFinishedPatch Speedup anim {__instance.name} {___onShownCallback}");
-            return true;
-        }
-    }
+    //[HarmonyPatch(typeof(GUIBaseViewAnimations), "ShowWindow")]
+    //internal class GUIBaseViewAnimationsShowWindowPatch
+    //{
+    //    static bool Prefix(GUIBaseViewAnimations __instance)
+    //    {
+    //        if (__instance != null)
+    //            Logger.Log($"GUIBaseViewAnimationsShowWindowPatch Speedup anim {__instance.name}");
+    //        //__instance.NeedToPlayAnimation = false;
+    //        return true;
+    //    }
+    //}
+    //[HarmonyPatch(typeof(GUIBaseViewAnimations), "OnAnimationFinished")]
+    //internal class GUIBaseViewAnimationsOnAnimationFinishedPatch
+    //{
+    //    static bool Prefix(GUIBaseViewAnimations __instance, Action ___onShownCallback)
+    //    {
+    //        if (__instance != null)
+    //            Logger.Log($"GUIBaseViewAnimationsOnAnimationFinishedPatch Speedup anim {__instance.name} {___onShownCallback}");
+    //        return true;
+    //    }
+    //}
 #endif
 }

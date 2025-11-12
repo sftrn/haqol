@@ -93,7 +93,7 @@ namespace HollywoodAnimalQOL2
         }
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.F5) &&
+            if ( Input.GetKeyUp(KeyCode.F5) &&
                 !GuiSystem.IsMainMenu &&
                 GameLoaded && SaveManager != null &&
                 GuiSystem.IsAllHidden && !GuiSystem.PausedByGUI)
