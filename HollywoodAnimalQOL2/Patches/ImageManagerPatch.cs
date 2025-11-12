@@ -31,7 +31,9 @@ namespace HollywoodAnimalQOL2.Patches
     {
         static void Postfix(PortraitConfig config, int ageGroup, ref string __result)
         {
+#if DEBUG
             Logger.Log("GetPortraitIdFromConfigForAgeGroup Requesting image id: " + __result);
+#endif
         }
     }
     public class InternalImageManager

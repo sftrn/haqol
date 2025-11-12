@@ -46,7 +46,9 @@ namespace HollywoodAnimalQOL2
           ref SimpleButton ___startPhaseButton)
         {
 
-
+#if DEBUG
+            Logger.Log("Preprod editor view");
+#endif
             if (___currentStage == PreproductionEditorView.Stages.Location)
             {
                 ChooseLocationAndCinematog(__instance, ref ___buildingsManager, ref ___charactersForReplacement, ref ___movieWrapper, ref ___selectedItemData, ref ___studioManager);
@@ -128,8 +130,10 @@ namespace HollywoodAnimalQOL2
         {
             var cinematographerSlot = ___movieWrapper.PreproductionSlots.Single(
                 slot => slot.Profession == Professions.Cinematographer);
+
             ChooseCharacterForSlot(__instance, ref ___movieWrapper,
                 ref ___charactersForReplacement, ref ___selectedItemData, cinematographerSlot);
+
             var movieWrapperCopy = ___movieWrapper;
             var studioManagerCopy = ___studioManager;
             Logger.Log("Pavilion list opened");
@@ -256,12 +260,12 @@ namespace HollywoodAnimalQOL2
                 if (preproductionSlot.Character == null)
                     return;
                 movieWrapperCopy.AddContractDraft(preproductionSlot.Character.Id, preproductionSlot.Character.Contract);
+                UpdateTeamSlotItemView.Invoke(__instance, new object[] { });
             }
             else
             {
                 Logger.Log($"0 characters for slot");
             }
-            UpdateTeamSlotItemView.Invoke(__instance, new object[] { });
         }
         static void ChooseTeam(PreproductionEditorView __instance, 
             ref MovieDataWrapper ___movieWrapper, 
