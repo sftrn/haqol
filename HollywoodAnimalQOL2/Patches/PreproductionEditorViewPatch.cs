@@ -155,25 +155,24 @@ namespace HollywoodAnimalQOL2
             Logger.Log($"Got {freePavs.Count} pavs free");
             if(freePavs.Count> 0)
             {
-                PavilionSelected.Invoke(__instance, new object[] { (ItemContainerData)freePavs[0] });
-                UpdateResults.Invoke(__instance, new object[] { });
                 var mw = ___movieWrapper;
-                Logger.Log($"Choosen first interactable pavilion ({((ItemContainerData)freePavs[0])})");
-                HelperObject.Instance.CallNextFrame(() =>
+                Action callWhenReady = ()=>
                 {
 
-                    mw.LocationSlots.ForEach((l =>
-                    {
-                        LocationSlotWrapper slot = l.Value;
-                        slot.Type = LocationTypes.Indoor;
-                        slot.Quality = studioManagerCopy.GetCurrentQualityLimit(slot);// studioManagerCopy.GetMaxIndoorLocaltionQuality(movieWrapperCopy, slot.Quality, slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel - 1]) - 1;//slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel];
-                        Logger.Log($"Slot {slot.TagId} quality = {slot.Quality}");
-
-                    }));
+                    PavilionSelected.Invoke(__instance, new object[] { (ItemContainerData)freePavs[0] });
                     UpdateResults.Invoke(__instance, new object[] { });
-                }
+                    Logger.Log($"Choosen first interactable pavilion ({((ItemContainerData)freePavs[0])})");
+                    mw.LocationSlots.ForEach((l =>
+                        {
+                            LocationSlotWrapper slot = l.Value;
+                            slot.Type = LocationTypes.Indoor;
+                            slot.Quality = studioManagerCopy.GetCurrentQualityLimit(slot)-1;// studioManagerCopy.GetMaxIndoorLocaltionQuality(movieWrapperCopy, slot.Quality, slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel - 1]) - 1;//slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel];
+                            Logger.Log($"Slot {slot.TagId} quality = {slot.Quality}");
 
-                );
+                        }));
+                    UpdateResults.Invoke(__instance, new object[] { });
+                };
+                HelperMethods.CallWithFrameDelay(()=>callWhenReady(), 10);
 
                 Logger.Log("Set locations");
             }
