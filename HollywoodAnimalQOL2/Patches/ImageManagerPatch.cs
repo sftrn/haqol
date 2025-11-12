@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UI.Common.Lists.ItemView;
 using UnityEngine;
-using static UnityEngine.Networking.UnityWebRequest;
+//using static UnityEngine.Networking.UnityWebRequest;
 using Logger = Loggerns.Logger;
 
 namespace HollywoodAnimalQOL2.Patches
@@ -31,7 +31,9 @@ namespace HollywoodAnimalQOL2.Patches
     {
         static void Postfix(PortraitConfig config, int ageGroup, ref string __result)
         {
+#if DEBUG
             Logger.Log("GetPortraitIdFromConfigForAgeGroup Requesting image id: " + __result);
+#endif
         }
     }
     public class InternalImageManager

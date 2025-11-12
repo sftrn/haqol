@@ -46,7 +46,9 @@ namespace HollywoodAnimalQOL2
           ref SimpleButton ___startPhaseButton)
         {
 
-
+#if DEBUG
+            Logger.Log("Preprod editor view");
+#endif
             if (___currentStage == PreproductionEditorView.Stages.Location)
             {
                 ChooseLocationAndCinematog(__instance, ref ___buildingsManager, ref ___charactersForReplacement, ref ___movieWrapper, ref ___selectedItemData, ref ___studioManager);
@@ -128,8 +130,10 @@ namespace HollywoodAnimalQOL2
         {
             var cinematographerSlot = ___movieWrapper.PreproductionSlots.Single(
                 slot => slot.Profession == Professions.Cinematographer);
+
             ChooseCharacterForSlot(__instance, ref ___movieWrapper,
                 ref ___charactersForReplacement, ref ___selectedItemData, cinematographerSlot);
+
             var movieWrapperCopy = ___movieWrapper;
             var studioManagerCopy = ___studioManager;
             Logger.Log("Pavilion list opened");
@@ -152,15 +156,26 @@ namespace HollywoodAnimalQOL2
             if(freePavs.Count> 0)
             {
                 PavilionSelected.Invoke(__instance, new object[] { (ItemContainerData)freePavs[0] });
-
-                Logger.Log("Choosen first interactable pavilion");
-
-                ___movieWrapper.LocationSlots.ForEach((l =>
+                UpdateResults.Invoke(__instance, new object[] { });
+                var mw = ___movieWrapper;
+                Logger.Log($"Choosen first interactable pavilion ({((ItemContainerData)freePavs[0])})");
+                HelperObject.Instance.CallNextFrame(() =>
                 {
-                    LocationSlotWrapper slot = l.Value;
-                    slot.Type = LocationTypes.Indoor;
-                    slot.Quality = studioManagerCopy.GetCurrentQualityLimit(slot);// studioManagerCopy.GetMaxIndoorLocaltionQuality(movieWrapperCopy, slot.Quality, slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel - 1]) - 1;//slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel];
-                }));
+
+                    mw.LocationSlots.ForEach((l =>
+                    {
+                        LocationSlotWrapper slot = l.Value;
+                        slot.Type = LocationTypes.Indoor;
+                        slot.Quality = studioManagerCopy.GetCurrentQualityLimit(slot);// studioManagerCopy.GetMaxIndoorLocaltionQuality(movieWrapperCopy, slot.Quality, slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel - 1]) - 1;//slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel];
+                        Logger.Log($"Slot {slot.TagId} quality = {slot.Quality}");
+
+                    }));
+                    UpdateResults.Invoke(__instance, new object[] { });
+                }
+
+                );
+
+                Logger.Log("Set locations");
             }
         }
 
@@ -256,12 +271,12 @@ namespace HollywoodAnimalQOL2
                 if (preproductionSlot.Character == null)
                     return;
                 movieWrapperCopy.AddContractDraft(preproductionSlot.Character.Id, preproductionSlot.Character.Contract);
+                UpdateTeamSlotItemView.Invoke(__instance, new object[] { });
             }
             else
             {
                 Logger.Log($"0 characters for slot");
             }
-            UpdateTeamSlotItemView.Invoke(__instance, new object[] { });
         }
         static void ChooseTeam(PreproductionEditorView __instance, 
             ref MovieDataWrapper ___movieWrapper, 

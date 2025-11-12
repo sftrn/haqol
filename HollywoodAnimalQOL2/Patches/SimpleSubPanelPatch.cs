@@ -31,8 +31,8 @@ namespace HollywoodAnimalQOL2.Patches
     {
         static bool Prefix(SimpleSubPanel __instance, ref ScriptedAnimatorBase ___showAnimator, ref int ___animationFrameDelay)
         {
-            __instance.VerboseLogging = true;
-            ___animationFrameDelay = 0;
+            //__instance.VerboseLogging = true;
+            //___animationFrameDelay = 0;
 
 #if DEBUG
             Logger.Log($"Speedup Show {__instance.IDText}");

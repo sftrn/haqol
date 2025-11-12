@@ -26,12 +26,13 @@ namespace HollywoodAnimalQOL2.Patches
         {
 #if DEBUG
             Logger.Log($"TriggerProcessorApplyTriggersInnerPatch patch {output?.requestedNextEventCountdown} {contextType}");
-#endif
             foreach (var item in triggers)
             {
+
                 Logger.Log($"trigger type: {item.triggerType} {item.value} {contextType}");
 
             }
+#endif
         }
         static void Postfix()
         {

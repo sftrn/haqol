@@ -40,12 +40,12 @@ namespace HollywoodAnimalQOL2
             Logger.Log("Helper object started");
             Instance = this;
             InitPrivateMethods();
-            for (int i = 0; i < 10; i++)
-            {
-                AddNewCharacterToGame(CharacterType.Talent, Professions.Actor, Genders.Male, SexualPreference.HETEROSEXUAL,
-                    1, 0.5f, 1f, 0.5f, 0.5f, 0.5f, i, i,
-                    new List<string> { }, false, 25f);
-            }
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    AddNewCharacterToGame(CharacterType.Talent, Professions.Actor, Genders.Male, SexualPreference.HETEROSEXUAL,
+            //        1, 0.5f, 1f, 0.5f, 0.5f, 0.5f, i, i,
+            //        new List<string> { }, false, 25f);
+            //}
             LocalizationManagerInitializePatch.Inited = false;
 #if DEBUG
             DebugModes.Logs.GUI = true;
@@ -93,7 +93,7 @@ namespace HollywoodAnimalQOL2
         }
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.F5) &&
+            if ( Input.GetKeyUp(KeyCode.F5) &&
                 !GuiSystem.IsMainMenu &&
                 GameLoaded && SaveManager != null &&
                 GuiSystem.IsAllHidden && !GuiSystem.PausedByGUI)
