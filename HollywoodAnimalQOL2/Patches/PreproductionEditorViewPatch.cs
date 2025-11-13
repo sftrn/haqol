@@ -155,21 +155,25 @@ namespace HollywoodAnimalQOL2
             Logger.Log($"Got {freePavs.Count} pavs free");
             if(freePavs.Count> 0)
             {
+                PavilionSelected.Invoke(__instance, new object[] { (ItemContainerData)freePavs[0] });
+                UpdateResults.Invoke(__instance, new object[] { });
                 var mw = ___movieWrapper;
                 Action callWhenReady = ()=>
                 {
 
-                    PavilionSelected.Invoke(__instance, new object[] { (ItemContainerData)freePavs[0] });
-                    UpdateResults.Invoke(__instance, new object[] { });
                     Logger.Log($"Choosen first interactable pavilion ({((ItemContainerData)freePavs[0])})");
                     mw.LocationSlots.ForEach((l =>
-                        {
-                            LocationSlotWrapper slot = l.Value;
-                            slot.Type = LocationTypes.Indoor;
-                            slot.Quality = studioManagerCopy.GetCurrentQualityLimit(slot)-1;// studioManagerCopy.GetMaxIndoorLocaltionQuality(movieWrapperCopy, slot.Quality, slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel - 1]) - 1;//slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel];
-                            Logger.Log($"Slot {slot.TagId} quality = {slot.Quality}");
+                    {
+                        LocationSlotWrapper slot = l.Value;
+                        slot.Type = LocationTypes.Indoor;
+                        var gameQualityLimit = studioManagerCopy.GetCurrentQualityLimit(slot);
+                        var choosenQuality = gameQualityLimit - 1;
+                        if(choosenQuality>3)
+                            choosenQuality = 3;
+                        slot.Quality = choosenQuality;// studioManagerCopy.GetMaxIndoorLocaltionQuality(movieWrapperCopy, slot.Quality, slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel - 1]) - 1;//slot.Config.maxQualityPavilions[slot.SelectedPavilionLevel];
+                        Logger.Log($"Slot {slot.TagId} gamequality={gameQualityLimit} choosenQuality={choosenQuality}");
 
-                        }));
+                    }));
                     UpdateResults.Invoke(__instance, new object[] { });
                 };
                 HelperMethods.CallWithFrameDelay(()=>callWhenReady(), 10);

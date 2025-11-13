@@ -460,9 +460,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Assets\newactors.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Assets\newactors.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
